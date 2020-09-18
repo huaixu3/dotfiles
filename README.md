@@ -1,2 +1,9 @@
-it is my config repositry 
-hope every thing will be come 
+# vimrc
+  highlight
+  beheaver
+  plug
+  
+# zshrc
+  plug
+  export
+  feh
