@@ -4,6 +4,6 @@
   plug
   
 # zshrc
-  plug
-  export
-  feh
+  plug  
+  export  
+  feh  
