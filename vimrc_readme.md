@@ -2,7 +2,7 @@
 
 # 1.The config for first time
   * 1.1 install plug.vim 
-# 2.Defaut option
+# 2.Defaut setting
   * 
 # 3.Map keys
   * 3.1 noremap
