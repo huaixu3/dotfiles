@@ -1,19 +1,64 @@
-" MYVIMRC
+" ===
+" === Auto load for first time uses
+" ===
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 "
-" To use it, copy it to
-"	       for Unix:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"	 for MS-Windows:  $VIM\_vimrc
-"	      for Haiku:  ~/config/settings/vim/vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"for  markdown
+
+" ===
+" === vim-instant-markdown
+" ===
+let g:instant_markdown_slow = 0
+let g:instant_markdown_autostart = 1
+" let g:instant_markdown_open_to_the_world = 1
+" let g:instant_markdown_allow_unsafe_content = 1
+" let g:instant_markdown_allow_external_content = 0
+" let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autoscroll = 1
+
+" Compile function
+noremap cc :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+"	elseif &filetype == 'cpp'
+"		set splitbelow
+"		exec "!g++ -std=c++11 % -Wall -o %<"
+"		:sp
+"		:res -15
+"		:term ./%<
+"	elseif &filetype == 'java'
+"		exec "!javac %"
+"		exec "!time java %<"
+"	elseif &filetype == 'sh'
+"		:!time bash %
+"	elseif &filetype == 'python'
+"		set splitbelow
+"		:sp
+"		:term python3 %
+"	elseif &filetype == 'html'
+"		silent! exec "!".g:mkdp_browser." % &"
+	elseif &filetype == 'markdown'
+		exec "InstantMarkdownPreview"
+		endif
+endfunc
+
+
 "
 "
-"1.Default setting
 "personal setting
 "base setting for display
 set number
 set relativenumber
 set cursorline
+set autoindent
 
 "change keyboard for quickly 
 noremap J 5j
@@ -38,7 +83,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+
 Plug 'junegunn/vim-easy-align'
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
 call plug#end()
 
 
