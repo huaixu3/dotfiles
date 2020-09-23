@@ -13,6 +13,16 @@
   * for each file skill
 # 5.Plug-vim
   * 5.1 PlugInstall
+  	- air-line
+	- EasyAlign
+	- coc 	  (depandent 1,nodejs
+		- coc-python  
+		depandent 1.python-language-server (pip3)  
+		- coc-clangd  
+		depandent 1.clangd (pacman clang)
+
+		
+		  
   * 5.2 Plug-config
   
   * 5.3 Plug-vim from others
