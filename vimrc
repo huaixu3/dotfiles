@@ -1,26 +1,28 @@
-" ===
-" === Auto load for first time uses
-" ===
+" =============================================================================
+" =============================================================================
+" _ __ ___  _   _  ___ ___  _ __  / _(_) __ _ 
+"| '_ ` _ \| | | |/ __/ _ \| '_ \| |_| |/ _` |
+"| | | | | | |_| | (_| (_) | | | |  _| | (_| |
+"|_| |_| |_|\__, |\___\___/|_| |_|_| |_|\__, |
+"           |___/                       |___/ 
+"============================================================================= 
+"=============================================================================
+"# 1.the config for first time
+" 	1.1 install plug.vim if not 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 "
-"for  markdown
-
-" ===
-" === vim-instant-markdown
-" ===
-let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 1
-" let g:instant_markdown_open_to_the_world = 1
-" let g:instant_markdown_allow_unsafe_content = 1
-" let g:instant_markdown_allow_external_content = 0
-" let g:instant_markdown_mathjax = 1
-let g:instant_markdown_autoscroll = 1
-
+"=============================================================================
+"# 2.Default setting 
+" 	2.1 vim options
+set number
+set relativenumber
+set cursorline
+set autoindent
+" 	2.2 addtional setting
 " Compile function
 noremap cc :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -49,17 +51,15 @@ func! CompileRunGcc()
 		exec "InstantMarkdownPreview"
 		endif
 endfunc
+" remenber couser when exit
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+ augroup END  
 
-
-"
-"
-"personal setting
-"base setting for display
-set number
-set relativenumber
-set cursorline
-set autoindent
-
+"=============================================================================
+"# 3 Map keys
+" 	3.1 noremap
 "change keyboard for quickly 
 noremap J 5j
 noremap K 5k
@@ -67,42 +67,51 @@ noremap H 5h
 noremap L 5l
 xmap ga :EasyAlign =
 noremap ga :EasyAlign =<CR>
+" 	3.2 inoremap 
+inoremap jk <Esc>
 inoremap [Caps] [Esc]
-
-"basic mapping 
+" 	3.3 leader map
 "  setting <LEADER> as <SPACE>
 let mapleader=" "
 noremap <LEADER>a :EasyAlign =<CR>
 noremap <LEADER><LEADER> f(l
 noremap  tt :tabNext<CR>
-inoremap <LEADER>q <Esc>
-
-"install vim plug
-
+"
+"=============================================================================
+"#4 for each type file
+" 	4.1 for markdown
+autocmd  FileType  markdown  inoremap  ,f  <Esc>/<++><CR>:nohlsearch<CR>cw
+autocmd  FileType  markdown  inoremap  ,b  **** <++><Esc>F*hi
+autocmd FileType markdown inoremap ,i :** <++><Ecs>F*hi
+"
+"=============================================================================
+"#5 Plug-vim
+" 	5.1 PlugInstall  
+" 		vim-airline  
+" 		coc.vim  
+" 		vim-instant-markdown  
+" 		vim-easy-align  
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
-Plug 'iamcco/markdown-preview.vim'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-
 Plug 'junegunn/vim-easy-align'
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
 call plug#end()
-
-
-
+" 	5.2 Plug-config
+" ===
+" === vim-instant-markdown
+" ===
+let g:instant_markdown_slow = 0
+let g:instant_markdown_autostart = 1
+" let g:instant_markdown_open_to_the_world = 1
+" let g:instant_markdown_allow_unsafe_content = 1
+" let g:instant_markdown_allow_external_content = 0
+" let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autoscroll = 1
 "
-"     personal setting end
-"
-"
-"
-"  Dividing line
-"   
-"
+"=============================================================================
+" 	5.3 plug-vim from others
 "the coc config for example
 " TextEdit might fail if hidden is not set.
 set hidden
