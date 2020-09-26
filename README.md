@@ -1,15 +1,9 @@
+# config
+> It's my config .about vimrc and zshrc
 # vimrc
-  highlight
-  beheaver
-  plug
-  
+ * init.vimrc
+ 	* for python c and markdown
+ * vimrc
+ 	* for **cli-manger** 
 # zshrc
-  plug  
-  export  
-  feh  
-|5&5|&545|4545|  
-|-|-|-|  
-|123|4455|456|  
-* pro  
-  * more  
-    * *uhjh*
+ * oh-my-zsh
