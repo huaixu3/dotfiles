@@ -83,7 +83,7 @@ noremap  tt :tabNext<CR>
 " 	4.1 for markdown
 autocmd  FileType  markdown  inoremap  ,f  <Esc>/<++><CR>:nohlsearch<CR>cw
 autocmd  FileType  markdown  inoremap  ,b  **** <++><Esc>F*hi
-autocmd FileType markdown inoremap ,i :** <++><Ecs>F*hi
+autocmd FileType markdown inoremap ,i :** <++> <Esc>F*i
 "
 "=============================================================================
 "#5 Plug-vim
