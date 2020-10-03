@@ -7,3 +7,5 @@
  	* for **cli-manger** 
 # zshrc
  * oh-my-zsh
+# i3
+ * exce terminal
