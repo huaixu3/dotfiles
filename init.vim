@@ -66,6 +66,7 @@ noremap K 5k
 noremap H 5h
 noremap L 5l
 noremap Q :q!<CR>
+noremap S :wq<CR>
 xmap ga :EasyAlign =
 noremap ga :EasyAlign =<CR>
 " 	3.2 inoremap 
