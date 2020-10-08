@@ -46,7 +46,10 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+c exec chromium
 #start fcitx
 exec fcitx
-
+exec ./rc.sh
+#light
+bindsym up exec light -A 5
+bindsym down exec light -U 5
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -182,6 +185,15 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+  colors {
+    separator #666666
+    background #000000
+    statusline #ffffff
+    focused_workspace #4c7899 #285577 #ffffff #fdf6e3
+    active_workspace #333333 #5f676a #ffffff #fdf6e3
+    inactive_workspace #333333 #222222 #888888 #002b36
+    urgent_workspace #2f343a #900000 #ffffff #fdf6e3
+  }
 }
 
 
@@ -198,3 +210,7 @@ gaps outer -2
 smart_borders on
 ##no border
 new_window 1pixel
+client.focused #4c7899 #285577 #ffffff #2e9ef4
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused #333333 #222222 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000

@@ -22,6 +22,8 @@ set number
 set relativenumber
 set cursorline
 set autoindent
+set foldenable
+set foldmethod=syntax
 " 	2.2 addtional setting
 " Compile function
 noremap cc :call CompileRunGcc()<CR>
@@ -41,10 +43,10 @@ func! CompileRunGcc()
 "		exec "!time java %<"
 "	elseif &filetype == 'sh'
 "		:!time bash %
-"	elseif &filetype == 'python'
-"		set splitbelow
-"		:sp
-"		:term python3 %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
 "	elseif &filetype == 'html'
 "		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
