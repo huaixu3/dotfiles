@@ -29,15 +29,15 @@ set foldmethod=syntax
 noremap cc :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
-	if &filetype == 'c'
+	if &filetype == 'c' || &filetype == 'cpp'
 		exec "!g++ % -o %<"
 		exec "!time ./%<"
-"	elseif &filetype == 'cpp'
-"		set splitbelow
-"		exec "!g++ -std=c++11 % -Wall -o %<"
-"		:sp
-"		:res -15
-"		:term ./%<
+	"elseif &filetype == 'cpp'
+	"	set splitbelow
+	"	exec "!g++ -std=c++11 % -Wall -o %<"
+	"	:sp
+	"	:res -15
+	"	:term ./%<
 "	elseif &filetype == 'java'
 "		exec "!javac %"
 "		exec "!time java %<"
