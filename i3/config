@@ -46,10 +46,10 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+c exec chromium
 #start fcitx
 exec fcitx
-exec ./rc.sh
+exec_always ~/.config/i3/rc.sh
 #light
-bindsym up exec light -A 5
-bindsym down exec light -U 5
+bindsym $mod+F5 exec xbacklight -10
+bindsym $mod+F6 exec xbacklight +10
 # kill focused window
 bindsym $mod+Shift+q kill
 
