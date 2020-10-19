@@ -87,6 +87,7 @@ noremap  tt :tabNext<CR>
 autocmd  FileType  markdown  inoremap  ,f  <Esc>/<++><CR>:nohlsearch<CR>cw
 autocmd  FileType  markdown  inoremap  ,b  **** <++><Esc>F*hi
 autocmd FileType markdown inoremap ,i :** <++> <Esc>F*i
+autocmd FileType markdown inoremap ,l :~~~~ <++> <Esc>F~hi
 "
 "=============================================================================
 "#5 Plug-vim
@@ -101,6 +102,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'junegunn/vim-easy-align'
+Plug 'vim-scripts/taglist.vim'
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 call plug#end()
 " 	5.2 Plug-config
 " ===
@@ -113,7 +116,20 @@ let g:instant_markdown_autostart = 1
 " let g:instant_markdown_allow_external_content = 0
 " let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autoscroll = 1
-"
+
+" ===
+" === taglist.vim
+" ===
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_Show_One_File = 1        
+let Tlist_Exit_OnlyWindow = 1   
+map <silent> <F9> :TlistToggle<cr>
+"===
+" === vim-table-mode
+" ===
+noremap <LEADER>tm :TableModeToggle<CR>
+"let g:table_mode_disable_mappings = 1
+"let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 "=============================================================================
 " 	5.3 plug-vim from others
 "the coc config for example
