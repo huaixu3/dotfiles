@@ -57,8 +57,8 @@ endfunc
 augroup resCur
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
- augroup END  
-
+augroup END  
+"
 "=============================================================================
 "# 3 Map keys
 " 	3.1 noremap
@@ -101,16 +101,18 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'Yggdroot/indentLine',{'for':'python'}
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/taglist.vim'
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 " 	5.2 Plug-config
 " ===
 " === vim-instant-markdown
 " ===
 let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 1
+let g:instant_markdown_autostart = 0
 " let g:instant_markdown_open_to_the_world = 1
 " let g:instant_markdown_allow_unsafe_content = 1
 " let g:instant_markdown_allow_external_content = 0
