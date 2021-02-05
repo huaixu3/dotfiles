@@ -24,3 +24,8 @@ nvim
 
 yay -S picom feh screenkey
 pacman -S chromium #安装常用软件
+```
+------
+## 还存在的问题
+1 中文在浏览器状态不能输入
+2 markdown preview 不能工作
