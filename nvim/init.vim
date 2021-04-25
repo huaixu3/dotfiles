@@ -19,11 +19,14 @@ endif
 "# 2.Default setting 
 " 	2.1 vim options
 set number
-set relativenumber
+"set relativenumber
 set cursorline
 set autoindent
-set foldenable
-set foldmethod=syntax
+"set foldenable
+"set foldmethod=syntax
+set ts=4 "tabspace
+set sw=4 "shiftword
+set expandtab
 " 	2.2 addtional setting
 " Compile function
 noremap cc :call CompileRunGcc()<CR>
@@ -38,9 +41,9 @@ func! CompileRunGcc()
 	"	:sp
 	"	:res -15
 	"	:term ./%<
-"	elseif &filetype == 'java'
-"		exec "!javac %"
-"		exec "!time java %<"
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java %<"
 "	elseif &filetype == 'sh'
 "		:!time bash %
 	elseif &filetype == 'python'
@@ -50,7 +53,7 @@ func! CompileRunGcc()
 "	elseif &filetype == 'html'
 "		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
-		exec "InstantMarkdownPreview"
+		exec "MarkdownPreviewToggle"
 		endif
 endfunc
 " remenber couser when exit
@@ -67,12 +70,14 @@ noremap J 5j
 noremap K 5k
 noremap H 5h
 noremap L 5l
-noremap Q :q!<CR>
+"noremap Q :q!<CR>
 noremap S :wq<CR>
 xmap ga :EasyAlign =
 noremap ga :EasyAlign =<CR>
 " 	3.2 inoremap 
 inoremap jk <Esc>
+inoremap <C-s> <Esc>:w<CR>
+nnoremap <C-s> <Esc>:w<CR>
 inoremap [Caps] [Esc]
 " 	3.3 leader map
 "  setting <LEADER> as <SPACE>
@@ -80,6 +85,7 @@ let mapleader=" "
 noremap <LEADER>a :EasyAlign =<CR>
 noremap <LEADER><LEADER> f(l
 noremap  tt :tabNext<CR>
+noremap vv ^v$
 "
 "=============================================================================
 "#4 for each type file
@@ -100,24 +106,58 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'Yggdroot/indentLine',{'for':'python'}
+Plug 'Yggdroot/indentLine' ",{'for':'python'}
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/taglist.vim'
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+"Plug 'SirVer/ultisnips'
+Plug 'https://gitee.com/zgpio/ultisnips'
+Plug 'https://gitee.com/zgpio/vim-snippets'
+"nerdtree & devicons
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"markdow
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'godlygeek/tabular' 
+Plug 'plasticboy/vim-markdown'
+"Plug 'joker1007/vim-markdown-quote-syntax' "代码格式高亮
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'morhetz/gruvbox'
+"java
+"Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
 " 	5.2 Plug-config
 " ===
+" ===gruvbox 
+" ===
+colorscheme gruvbox
+let g:gruvbox_transparent_bg = 1
+"autocmd vimenter * ++nested colorscheme gruvbox
+"set bg=dark
+
+" ===
+" === vim-javacomplete2'
+" === 
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+	
+" ===
+" === vim-markdown
+" === 
+let g:vim_markdown_folding_disabled = 1
+set conceallevel=2
+
+" ===
 " === vim-instant-markdown
 " ===
-let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 0
+"let g:instant_markdown_slow = 0
+"let g:instant_markdown_autostart = 0
 " let g:instant_markdown_open_to_the_world = 1
 " let g:instant_markdown_allow_unsafe_content = 1
 " let g:instant_markdown_allow_external_content = 0
 " let g:instant_markdown_mathjax = 1
-let g:instant_markdown_autoscroll = 1
+"let g:instant_markdown_autoscroll = 1
 
 " ===
 " === taglist.vim
@@ -126,12 +166,36 @@ let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Show_One_File = 1        
 let Tlist_Exit_OnlyWindow = 1   
 map <silent> <F9> :TlistToggle<cr>
+" ===
+" === NerdTree
+" ===
+map <silent> <F8> :NERDTreeToggle<cr>
 "===
 " === vim-table-mode
 " ===
 noremap <LEADER>tm :TableModeToggle<CR>
 "let g:table_mode_disable_mappings = 1
 "let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+"===
+"=== autodentLine
+"===
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_enabled = 0
+"let g:indentLine_setColors = 0
+"set list lcs=tab:\|\ 
+"===
+" === Makdown preview
+" ===
+"let g:mkdp_auto_start = 1
+"let g:mkdp_auto_close = 1
+" ===
+" === ultisnips
+" ===
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
 "=============================================================================
 " 	5.3 plug-vim from others
 "the coc config for example

@@ -67,7 +67,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git                     # unknown
+plugins=(                     # unknown
 	 z                       # fast to somewhere have done
 	 extract                 # extract compress file eg.zip,tar
 	 zsh-autosuggestions     # autofill command that have type
@@ -114,5 +114,13 @@ source $ZSH/oh-my-zsh.sh
 #
 # set the plugin another
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
+
+#personal alias
 alias lg=lazygit
 alias ra=ranger
+export EDITOR=nvim
+alias ls=lsd
+
+#startup xmodmap
+/usr/bin/xmodmap $HOME/.Xmodmap
+/usr/bin/xcape -e 'Mode_switch=Escape'
