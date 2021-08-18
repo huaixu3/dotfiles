@@ -47,6 +47,20 @@ alias lg=lazygit
 alias ra=ranger
 export EDITOR=nvim
 alias ls=lsd
+alias ll="ls -l"
+alias s=singularity
+alias d=td
+alias cman='man -M /usr/share/man/zh_CN'
+#/usr/bin/xmodmap -quiet $HOME/.Xmodmap2 &
+#/usr/bin/xcape -e 'Mode_switch=Escape' 
+/usr/bin/xmodmap -e "keycode  43 = h H Left H"
+/usr/bin/xmodmap -e "keycode  44 = j J Down J"
+/usr/bin/xmodmap -e "keycode  45 = k K Up K"
+/usr/bin/xmodmap -e "keycode  46 = l L Right L"
+/usr/bin/xmodmap -e "keycode  66 = Mode_switch Caps_Lock NoSymbol Caps_Lock"
+
+# start when zsh begin 
+#td 
 
 #startup xmodmap
 #/usr/bin/xmodmap $HOME/.Xmodmap

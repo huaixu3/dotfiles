@@ -102,7 +102,7 @@ autocmd FileType markdown inoremap ,l :~~~~ <++> <Esc>F~hi
 " 		coc.vim  
 " 		vim-instant-markdown  
 " 		vim-easy-align  
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
