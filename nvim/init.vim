@@ -111,7 +111,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/taglist.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "Plug 'SirVer/ultisnips'
-Plug 'https://gitee.com/zgpio/ultisnips'
+"Plug 'https://gitee.com/zgpio/ultisnips'
 Plug 'https://gitee.com/zgpio/vim-snippets'
 "nerdtree & devicons
 Plug 'scrooloose/nerdtree'
