@@ -26,7 +26,9 @@ set autoindent
 "set foldmethod=syntax
 set ts=4 "tabspace
 set sw=4 "shiftword
+set softtabstop=4
 set expandtab
+set showmatch
 " 	2.2 addtional setting
 " Compile function
 noremap cc :call CompileRunGcc()<CR>
@@ -106,7 +108,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
-Plug 'Yggdroot/indentLine' ",{'for':'python'}
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/taglist.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -125,6 +126,9 @@ Plug 'plasticboy/vim-markdown'
 "Plug 'joker1007/vim-markdown-quote-syntax' "代码格式高亮
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'morhetz/gruvbox'
+"Plug 'sbdchd/neoformat'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-autoformat/vim-autoformat'
 "java
 "Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
@@ -179,11 +183,20 @@ noremap <LEADER>tm :TableModeToggle<CR>
 "===
 "=== autodentLine
 "===
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_enabled = 0
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_enabled = 1
 "let g:indentLine_setColors = 0
 "set list lcs=tab:\|\ 
+
 "===
+"=== vim-autoformat
+"===
+let g:formatdef_my_clang = '"clang-format"'
+let g:formatters_cpp = ['my_clang']
+let g:formatters_c = ['my_clang']
+noremap <LEADER>bf :Autoformat<CR>
+
+
 " === Makdown preview
 " ===
 "let g:mkdp_auto_start = 1
