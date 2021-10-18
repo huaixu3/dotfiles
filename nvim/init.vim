@@ -84,6 +84,8 @@ inoremap [Caps] [Esc]
 " 	3.3 leader map
 "  setting <LEADER> as <SPACE>
 let mapleader=" "
+noremap <LEADER>h <C-W>h
+noremap <LEADER>l <C-w>l
 noremap <LEADER>a :EasyAlign =<CR>
 noremap <LEADER><LEADER> f(l
 noremap  tt :tabNext<CR>
