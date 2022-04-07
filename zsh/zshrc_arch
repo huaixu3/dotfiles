@@ -67,7 +67,7 @@ alias cman='man -M /usr/share/man/zh_CN'
 #/usr/bin/xcape -e 'Mode_switch=Escape'
 
 ## fuck fuck rm !!!!!
-alias rm=trash  
+#alias rm=trash  
 alias r=trash 
 alias rl='ls ~/.trash'  
 alias ur=undelfile 
