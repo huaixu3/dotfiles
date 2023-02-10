@@ -1,0 +1,95 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#source plugins
+source /opt/homebrew/Cellar/zsh-autosuggestions/0.7.0/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/Cellar/zsh-fast-syntax-highlighting/1.55/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source /opt/homebrew/Cellar/zsh-history-substring-search/1.0.2/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /opt/local/zsh-plugin/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/local/zsh-plugin/zsh-z/zsh-z.plugin.zsh
+source /opt/local/zsh-plugin/zsh-extract/extract.plugin.zsh
+source /opt/local/zsh-plugin/manjaro-zsh-config
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# Case insensitive & command completion and packge completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+HISTFILE=~/.zhistory
+HISTSIZE=10000
+SAVEHIST=10000
+
+autoload -U compinit               # command completion and packge completion
+compinit -d
+
+
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-R
+
+
+#personal alias
+alias lg=lazygit
+alias ra=ranger
+export EDITOR=nvim
+alias ls=lsd
+alias ll="ls -l"
+alias s=singularity
+alias d=td
+alias cman='man -M /usr/share/man/zh_CN'
+#/usr/bin/xmodmap -quiet $HOME/.Xmodmap2 &
+#/usr/bin/xcape -e 'Mode_switch=Escape'
+#/usr/bin/xmodmap -e "keycode  43 = h H Left H"
+#/usr/bin/xmodmap -e "keycode  44 = j J Down J"
+#/usr/bin/xmodmap -e "keycode  45 = k K Up K"
+#/usr/bin/xmodmap -e "keycode  46 = l L Right L"
+#/usr/bin/xmodmap -e "keycode  66 = Mode_switch Caps_Lock NoSymbol Caps_Lock"
+
+# start when zsh begin
+#td
+
+#startup xmodmap
+#/usr/bin/xmodmap $HOME/.Xmodmap
+#/usr/bin/xcape -e 'Mode_switch=Escape'
+
+## fuck fuck rm !!!!!
+#alias rm=trash
+alias r=trash
+alias rl='ls ~/.trash'
+alias ur=undelfile
+undelfile()
+{
+  mv -i ~/.trash/\$@ ./
+}
+trash()
+{
+  mv $@ ~/.trash/
+}
+cleartrash()
+{
+    read -p "clear sure?[n]" confirm
+    [ $confirm == 'y' ] || [ $confirm == 'Y' ]  && /bin/rm -rf ~/.trash/*
+}
+## end rm
+
+
+export CLICOLOR=1
+export LSCOLORS=ExGxFxdaCxDaDahbadeche
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export MAVEN_HOME=/Users/ve/.m2/apache-maven-3.8.6
+export PATH=$PATH:$MAVEN_HOME/bin
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
