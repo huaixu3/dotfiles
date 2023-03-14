@@ -94,8 +94,10 @@ require("mason").setup({
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.tsserver.setup{}
+--require'lspconfig'.typescriptlanguageserver.setup{}
 require'lspconfig'.html.setup{}
 require'lspconfig'.vuels.setup{}
+require'lspconfig'.gopls.setup{}
 
 -- ====================================
 -- cmp config
@@ -217,6 +219,14 @@ require("toggleterm").setup({
     -- 在当前buffer的下方打开新终端
     direction = 'horizontal'
 })
+-- require("toggleterm").setup({
+--     open_mapping = [[<d-t>]],
+--     -- 打开新终端后自动进入插入模式
+--     start_in_insert = true,
+--     -- 在当前buffer的下方打开新终端
+--     direction = 'horizontal'
+-- })
+
 -- ========================================================================
 -- end
 -- ========================================================================

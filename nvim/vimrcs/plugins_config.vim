@@ -9,7 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "plug 'https://github.com/godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
-Plug 'vim-scripts/taglist.vim'
+""Plug 'vim-scripts/taglist.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "Plug 'SirVer/ultisnips'
 "nerdtree & devicons
@@ -60,9 +60,44 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "terminal"
 Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
 "Plug 'preservim/nerdcommenter'
+
+""Plug 'https://gitee.com/rulei_mirror/vim-gutentags'
+Plug 'https://gitee.com/snowindz/vim-markdown-toc'
+Plug 'https://gitee.com/snowindz/vim-tagbar'
 "
 call plug#end()
+"tagbar======="
+"
+let g:tagbar_position = 'topleft vertical'
+let g:tagbar_width = max([20, winwidth(0) / 5])
+let g:tagbar_type_txt = {
+    \ 'ctagstype': 'txt',
+    \ 'kinds' : [
+        \'c:content',
+        \'t:tables',
+        \'f:figures'
+    \],
+    \ 'sort'    : 0
+\}
+
+map <M-b> :Tagbar<cr>
+map <C-b> :Tagbar<cr>
+map <C-t> :ToggleTerm<cr>
+
+"=====vim markdow toc ======"
+
 ""source  /home/ve/.config/nvim/plugged/ctrlp.vim/plugin/ctrlp.vim
+" gutentages==tag"
+""set statusline+=%{gutentags#statusline()}
+""let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+""let g:gutentags_ctags_tagfile = '.tags'
+""let s:vim_tags = expand('~/.cache/tags')
+""let g:gutentags_cache_dir = s:vim_tags
+""" 检测 ~/.cache/tags 不存在就新建 "
+""if !isdirectory(s:vim_tags)
+""   silent! call mkdir(s:vim_tags, 'p')
+""endif
+"===="
 ""'source  /home/ve/.config/nvim/plugged/mru.vim/plugin/mru.vim
 set completeopt=menu,menuone,noselect
 
@@ -145,6 +180,7 @@ let NERDTreeShowHidden=0
 let g:NERDTreeWinSize=25
 noremap <leader>f :NERDTreeToggle<cr>
 map <M-n> :NERDTreeToggle<cr>
+map <C-m> :NERDTreeToggle<cr>
 " q=> quit
 " t=> open tab
 " p => previous dictionary

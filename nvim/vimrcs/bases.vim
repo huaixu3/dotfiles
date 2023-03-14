@@ -123,6 +123,11 @@ map <M-j> <C-W>j
 map <M-k> <C-W>k
 map <M-h> <C-W>h
 map <M-l> <C-W>l
+" adjust for mac
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 "use alt + number to move tabn"
 noremap <silent><M-1> :tabn 1<cr>
