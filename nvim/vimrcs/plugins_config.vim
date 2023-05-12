@@ -64,6 +64,12 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
 ""Plug 'https://gitee.com/rulei_mirror/vim-gutentags'
 Plug 'https://gitee.com/snowindz/vim-markdown-toc'
 Plug 'https://gitee.com/snowindz/vim-tagbar'
+
+"prettier"
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'https://gitee.com/billscofield/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 "
 call plug#end()
 "tagbar======="
