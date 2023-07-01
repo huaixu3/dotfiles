@@ -21,7 +21,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular' 
 Plug 'plasticboy/vim-markdown'
-"Plug 'joker1007/vim-markdown-quote-syntax' "代码格式高亮
+Plug 'joker1007/vim-markdown-quote-syntax' "代码格式高亮
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'morhetz/gruvbox'
 "Plug 'sbdchd/neoformat'
